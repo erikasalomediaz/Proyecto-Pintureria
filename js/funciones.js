@@ -75,8 +75,8 @@ const calcularsupfinal = (suptecho, supparedes, supaberturas) => {
 
 //mostrar valores finales
 mostrarvalores=(supfinal, rendimiento, precio, litrosnec, cliente, preciototal) =>{
-    let valoresfinales = "Superficie total a pintar: " + supfinal + "\n";
-valoresfinales += "Rendimiento del producto: " + rendimiento +"lts. por m2 " + "\n";
+    let valoresfinales = "Superficie total a pintar: " + supfinal + " m2 " +"\n";
+valoresfinales += "Rendimiento del producto: " + rendimiento +"m2 por litro " + "\n";
 valoresfinales += "Precio por litro: " + precio + "\n";
 valoresfinales += "Litros necesarios: " + litrosnec + "\n";
 if (cliente == "SI"){
