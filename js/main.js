@@ -1,21 +1,21 @@
 //entrada de datos / procesamiento / salida
-let suptecho = 0;
-let techoalto = 0;
-let techoancho = 0;
-let supparedes = 0;
-let supaberturas = 0;
-let aberalto = 0;
-let aberancho = 0;
-let litrosnec = 0;
+let SupTecho = 0;
+let TechoAlto = 0;
+let TechoAncho = 0;
+let SupParedes = 0;
+let SupAberturas = 0;
+let AberAlto = 0;
+let AberAncho = 0;
+let LitrosNec = 0;
 let rendimiento = 0;
 let precio = 0;
 let descuento = 1;
-let preciototal = 0;
+let PrecioTotal = 0;
 
 
 
 //solicito tipo de cliente
-let cliente = esCliente();
+let cliente = EsCliente();
 
 
 //solicito producto
@@ -25,20 +25,19 @@ while (producto != "antihumedad" && producto != "esmalte" && producto != "latex"
 }
 
 //calculo superficies
-suptecho = calcularsuptecho(techoalto, techoancho);
-alert("Superficie techo: " + suptecho);
+SupTecho = CalcularSupTecho(TechoAlto, TechoAncho);
+alert("Superficie techo: " + SupTecho);
 
-supparedes = calcularsupparedes();
-alert("Superficie paredes :" + supparedes);
+SupParedes = CalcularSupParedes();
+alert("Superficie paredes :" + SupParedes);
 
-supaberturas = calcularsupaberturas();
-alert("Superficie aberturas :" + supaberturas);
+SupAberturas = CalcularSupAberturas();
+alert("Superficie aberturas :" + SupAberturas);
 
 //calculo superficie final
-let supfinal = calcularsupfinal(suptecho, supparedes, supaberturas);
+let SupFinal = CalcularSupFinal(SupTecho, SupParedes, SupAberturas);
 
 //agregar switch de rendimiento y precio
-
 switch (producto) {
     case "antihumedad":
         rendimiento = 8;
@@ -70,10 +69,10 @@ switch (producto) {
 
 //calculo final de litros necesarios
 if (cliente == "SI") descuento = 0.85;
-litrosnec = supfinal / rendimiento;
-preciototal = litrosnec * precio * descuento;
+LitrosNec = SupFinal / rendimiento;
+PrecioTotal = LitrosNec * precio * descuento;
 
 //se muestran valores finales
-let valoresfinales = mostrarvalores(supfinal, rendimiento, precio, litrosnec, cliente, preciototal);
-alert(valoresfinales);
+let ValoresFinales = MostrarValores(SupFinal, rendimiento, precio, LitrosNec, cliente, PrecioTotal);
+alert(ValoresFinales);
 
