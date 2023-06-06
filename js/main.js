@@ -11,8 +11,22 @@ let rendimiento = 0;
 let precio = 0;
 let descuento = 1;
 let PrecioTotal = 0;
+let ind = 0;
 
+let tiposPro = ["antihumedad", "esmalte",  "latex", "revestimiento", "impermeabilizante"];
+class Producto{
+    constructor ( tipoProd, rendimientoProd, precioProd){
+        this.tipo = tipoProd;
+        this.rendimiento = rendimientoProd;
+        this.precio = precioProd;
+    }
+}
 
+const producto1 = new Producto(tiposPro[0], 8, 3500);
+const producto2 = new Producto(tiposPro[1], 6, 2350);
+const producto3 = new Producto(tiposPro[2], 5, 1000);
+const producto4 = new Producto(tiposPro[3], 3, 10000);
+const producto5 = new Producto(tiposPro[4], 0.5, 7500);
 
 //solicito tipo de cliente
 let cliente = EsCliente();
@@ -20,9 +34,11 @@ let cliente = EsCliente();
 
 //solicito producto
 let producto = prompt("Ingrese el tipo de producto que desea(antihumedad, esmalte,  latex, revestimiento, impermeabilizante) ").toLowerCase();
-while (producto != "antihumedad" && producto != "esmalte" && producto != "latex" && producto != "revestimiento" && producto != "impermeabilizante") {
+
+while (tiposPro.indexOf(producto)< 0){
     producto = prompt("Ingrese el tipo de producto que desea(antihumedad, esmalte,  latex, revestimiento, impermeabilizante) ").toLowerCase();
 }
+ind = tiposPro.indexOf(producto);
 
 //calculo superficies
 SupTecho = CalcularSupTecho(TechoAlto, TechoAncho);
@@ -38,27 +54,22 @@ alert("Superficie aberturas :" + SupAberturas);
 let SupFinal = CalcularSupFinal(SupTecho, SupParedes, SupAberturas);
 
 //agregar switch de rendimiento y precio
-switch (producto) {
-    case "antihumedad":
-        rendimiento = 8;
-        precio = 3500;
+switch (tiposPro[ind]) {
+    case producto1.tipo:
+        productoElegido = new Producto(producto1.tipo, producto1.rendimiento, producto1.precio);
         break;
-    case "esmalte":
-        rendimiento = 6;
-        precio = 2350;
+    case producto2.tipo:
+        productoElegido = new Producto(producto2.tipo, producto2.rendimiento, producto2.precio);
         break;
-    case "latex":
-        rendimiento = 5;
-        precio = 1000;
+    case producto3.tipo:
+        productoElegido = new Producto(producto3.tipo, producto3.rendimiento, producto3.precio);
         break;
-    case "revestimiento":
-        rendimiento = 3;
-        precio = 10000;
+    case producto4.tipo:
+        productoElegido = new Producto(producto4.tipo, producto4.rendimiento, producto4.precio);
 
         break;
-    case "impermeabilizante":
-        rendimiento = 0.5;
-        precio = 7500;
+    case producto5.tipo:
+        productoElegido = new Producto(producto5.tipo, producto5.rendimiento, producto5.precio);
         break;
 
     default:
@@ -67,12 +78,13 @@ switch (producto) {
         break;
 }
 
+
 //calculo final de litros necesarios
 if (cliente == "SI") descuento = 0.85;
-LitrosNec = SupFinal / rendimiento;
-PrecioTotal = LitrosNec * precio * descuento;
+LitrosNec = SupFinal / productoElegido.rendimiento;
+PrecioTotal = LitrosNec * productoElegido.precio * descuento;
 
 //se muestran valores finales
-let ValoresFinales = MostrarValores(SupFinal, rendimiento, precio, LitrosNec, cliente, PrecioTotal);
+let ValoresFinales = MostrarValores(SupFinal, productoElegido.rendimiento, productoElegido.precio, LitrosNec, cliente, PrecioTotal);
 alert(ValoresFinales);
 
